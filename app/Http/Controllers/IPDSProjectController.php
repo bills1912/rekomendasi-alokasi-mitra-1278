@@ -308,6 +308,7 @@ class IPDSProjectController extends Controller
             'id_bs_sample' => Session::get('sample')['id_bs_sample'],
             'bs_sudah_teralokasi' => $arr_test3,
             'nama_kegiatan_survei' => strtoupper(Session::get('sample')['nama_kegiatan_survei']),
+            'wilkerstat_kegiatan_survei' => strtoupper(Session::get('sample')['wilkerstat_kegiatan_survei']),
             'id_kegiatan_survei' => DaftarSurveiModel::where('daftar_kegiatan_survei', strtoupper(Session::get('sample')['nama_kegiatan_survei']))->first()->id,
             'status_honor_kegiatan_survei' => DaftarSurveiModel::where('daftar_kegiatan_survei', strtoupper(Session::get('sample')['nama_kegiatan_survei']))->first()->sudah_dialokasikan_honor,
             'total_honor_dialokasikan' => RateHonor::whereIn('kegiatan', $kegiatan_filter_bulan)->groupBy('id_mitra')->selectRaw('sum(honor) as total_honor, id_mitra')->pluck('total_honor', 'id_mitra'),

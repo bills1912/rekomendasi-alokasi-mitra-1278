@@ -142,7 +142,7 @@ class MenuMasterController extends Controller
 
     public function ambilMitraDenganOB()
     {
-        $kegiatan_filter_bulan = DaftarSurveiModel::where('waktu_mulai', 'LIKE', '%' . $_POST['filter_bulan'] . '%')->get('daftar_kegiatan_survei')->toArray();
+        $kegiatan_filter_bulan = DaftarSurveiModel::where('periode_pencairan_honor', 'LIKE', '%' . $_POST['filter_bulan'] . '%')->get('daftar_kegiatan_survei')->toArray();
         $id_mitra_ob = RateHonor::whereIn('kegiatan', $kegiatan_filter_bulan)->where('jenis_pembayaran_mitra', 'Orang Bulan')->get('id_mitra')->toArray();
         $ids_mitra = array();
         foreach ($id_mitra_ob as $field => $value) {

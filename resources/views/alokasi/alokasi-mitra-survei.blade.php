@@ -36,10 +36,11 @@
                                         style="width: {{ (count(session()->get('sample')['bs_sudah_teralokasi']) / count(session()->get('sample')['id_bs_sample'])) * 100 }}%">
                                         <strong
                                             style="font-size: 16px;">{{ count(session()->get('sample')['bs_sudah_teralokasi']) }}
-                                            BS</strong>
+                                            {{ session()->get('sample')['wilkerstat_kegiatan_survei'] == 'DESA' ? 'Desa' : 'BS' }}</strong>
                                     </div>
                                 </div>
-                                Dari Total: {{ count(session()->get('sample')['id_bs_sample']) }} Blok Sensus
+                                Dari Total: {{ count(session()->get('sample')['id_bs_sample']) }}
+                                {{ session()->get('sample')['wilkerstat_kegiatan_survei'] == 'DESA' ? 'Desa' : 'Blok Sensus' }}
                             </div>
                         @endif
                         <div class="card mb-4">

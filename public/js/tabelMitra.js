@@ -74,7 +74,7 @@ $(document).ready(function () {
                     groupOverviewBS.addTo(overviewMap);
                     groupOverviewBS.addLayer(overview_bs_geom);
                     function bsOnEachFeature(feature, layer) {
-                        var content = feature.properties.nmdesa.toString();
+                        var content = (JSON.parse($('#session-wilkerstat').val()) == 'DESA') ? feature.properties.nmdesa.toString() : feature.properties.idbs.toString();
                         // layer.bindTooltip(content, {
                         //     direction: 'center',
                         //     permanent: true,
@@ -144,7 +144,6 @@ $(document).ready(function () {
                                 bsSurveiGroup.clearLayers();
                                 layerGroup.clearLayers();
                                 let idWilkerstat = JSON.parse($('#session-wilkerstat').val()) == 'DESA' ? feature.properties.iddesa : feature.properties.idbs;
-                                let idBS = feature.properties.iddesa;
                                 fetch(wilkerstat_file)
                                     .then(function (response) {
                                         return response.json();
@@ -175,7 +174,7 @@ $(document).ready(function () {
                                                         }
                                                     };
                                                     function bsOnEachFeature(feature, layer) {
-                                                        var content = feature.properties.nmdesa.toString();
+                                                        var content = (JSON.parse($('#session-wilkerstat').val()) == 'DESA') ? feature.properties.nmdesa.toString() : feature.properties.idbs.toString();
                                                         // layer.bindTooltip(content, {
                                                         //     direction: 'center',
                                                         //     permanent: true,
