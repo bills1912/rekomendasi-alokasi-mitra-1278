@@ -232,7 +232,7 @@
                                     }
                                 },
                             ],
-                            'stateSave': true,
+                            // 'stateSave': true,
                             'select': {
                                 'style': 'multi'
                             },
@@ -259,7 +259,6 @@
                                         data: result[0],
                                         initComplete: function(settings) {
                                             var api = this.api();
-                                            console.log(result[1])
 
                                             api.cells(
                                                 api.rows(function(idx, data, node) {
@@ -299,7 +298,7 @@
                                                 }
                                             },
                                         ],
-                                        'stateSave': true,
+                                        // 'stateSave': true,
                                         'select': {
                                             'style': 'multi'
                                         },
