@@ -17,6 +17,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class MenuMasterController extends Controller
 {
+    // New UI
+    public function newUIPage()
+    {
+        return view('new-home-ui');
+    }
     // Daftar Kegiatan
     public function daftarKegiatanPage()
     {

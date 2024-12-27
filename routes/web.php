@@ -97,6 +97,9 @@ Route::get('/resetAllCookies', [IPDSProjectController::class, 'hapusCookies']);
 Route::post('/daftar_ringkasan_honor', [KeuanganAlokasiMitraController::class, 'filterRateHonorPerBulan']);
 
 Route::middleware('auth')->group(function () {
+    // New UI Kit
+    Route::get('/new_ui', [MenuMasterController::class, 'newUIPage'])->name("new_ui");
+
     // Master Menu
     Route::get('/daftar_kegiatan', [MenuMasterController::class, 'daftarKegiatanPage']);
     Route::get('/daftar_pengguna', [ProfileController::class, 'listUser']);

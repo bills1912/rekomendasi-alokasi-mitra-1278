@@ -134,6 +134,10 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading active">Menu Master</div>
+                        <a class="nav-link" href="{{ url('/new_ui') }}">
+                            <div class="sb-nav-link-icon"><i class="fa-brands fa-uikit fa-fw"></i></div>
+                            New UI
+                        </a>
                         <a class="nav-link" href="{{ url('/daftar_kegiatan') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-list fa-fw"></i></div>
                             Daftar Kegiatan
