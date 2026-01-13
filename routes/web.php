@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Menu Master
+// New UI Kit
+Route::get('/new_ui', [MenuMasterController::class, 'newUIPage'])->name("new_ui");
 // Daftar Kegiatan
 Route::post('/tambah_daftar_kegiatan', [MenuMasterController::class, 'tambahKegiatanSurveiSensus']);
 Route::post('/edit_data_kegiatan/{id}', [MenuMasterController::class, 'editKegiatanSurveiSensus']);
@@ -97,8 +99,6 @@ Route::get('/resetAllCookies', [IPDSProjectController::class, 'hapusCookies']);
 Route::post('/daftar_ringkasan_honor', [KeuanganAlokasiMitraController::class, 'filterRateHonorPerBulan']);
 
 Route::middleware('auth')->group(function () {
-    // New UI Kit
-    Route::get('/new_ui', [MenuMasterController::class, 'newUIPage'])->name("new_ui");
 
     // Master Menu
     Route::get('/daftar_kegiatan', [MenuMasterController::class, 'daftarKegiatanPage']);

@@ -116,6 +116,9 @@
                                             </option>
                                             <option value="Pendataan">Pendataan</option>
                                             <option value="Pengolahan">Pengolahan</option>
+                                            <option value="Pendataan + Pengolahan">Pendataan + Pengolahan</option>
+                                            <option value="Pendataan + PML Mitra">Pendataan + PML Mitra</option>
+                                            <option value="Pendataan + Pengolahan + PML Mitra">Pendataan + Pengolahan + PML Mitra</option>
                                         </select>
                                     </div>
                                     <div class="form-group flex-group">
@@ -137,10 +140,18 @@
                                         <input class="form-control" type="number" name="jumlahSatuan" id="jumlahSatuan"
                                             placeholder="Masukan Jumlah Satuan" autocomplete="off" required>
                                     </div>
-                                    <div class="form-group flex-group">
-                                        <label class="col-sm-4 required" for="nominalperSatuan">Harga Satuan PML:</label>
-                                        <input class="form-control" type="text" name="nominalperSatuan"
-                                            id="nominalperSatuan" type-currency="IDR" placeholder="Rp" required>
+                                    <div class="form-group flex-group" id="formNominalPerSatuanPML" hidden>
+                                        <label class="col-sm-4 required" for="nominalperSatuanPML">Harga Satuan
+                                            PML:</label>
+                                        <input class="form-control" type="text" name="nominalperSatuanPML"
+                                            id="nominalperSatuanPML" type-currency="IDR" placeholder="Rp" required>
+                                    </div>
+                                    <div class="form-group flex-group" id="formNominalPerSatuanPengolahan" hidden>
+                                        <label class="col-sm-4 required" for="nominalperSatuanPengolahan">Harga Satuan
+                                            Pengolahan:</label>
+                                        <input class="form-control" type="text" name="nominalperSatuanPengolahan"
+                                            id="nominalperSatuanPengolahan" type-currency="IDR" placeholder="Rp"
+                                            required>
                                     </div>
                                     <div class="form-group flex-group">
                                         <label class="col-sm-4 required" for="nominalperSatuan">Harga Satuan PCL:</label>
@@ -338,8 +349,7 @@
                                             <label class="col-sm-4 required" for="bebanAnggaranKegiatan">Beban Anggaran
                                                 Kegiatan:</label>
                                             <input class="form-control" type="text" name="bebanAnggaranKegiatan"
-                                                id="bebanAnggaranKegiatan"
-                                                value="{{ $kegiatan->kode_beban_anggaran }}">
+                                                id="bebanAnggaranKegiatan" value="{{ $kegiatan->kode_beban_anggaran }}">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary"><i

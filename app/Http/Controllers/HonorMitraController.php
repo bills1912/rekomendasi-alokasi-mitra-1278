@@ -61,13 +61,16 @@ class HonorMitraController extends Controller
         } else {
             $honor_mitra = RateHonor::groupBy('id_mitra')->selectRaw('sum(honor) as total_honor, id_mitra')->pluck('total_honor', 'id_mitra');
             $mitra_teralokasi = DaftarMitra::whereIn('id', json_decode($_COOKIE['ids']))->whereNotIn('id', $tresh)->get();
+            // dd($mitra_teralokasi);
             $mitra_teralokasi_honor = RateHonor::whereIn('id_mitra', json_decode($_COOKIE['ids']))->get();
             return view('rate_honor.tabel_rate_honor', [
                 'mitra_teralokasi' => $mitra_teralokasi,
                 'mitra_honor' => $mitra_teralokasi_honor,
                 'total_honor_mitra' => $honor_mitra,
                 'jenis_pembayaran_kegiatan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->jenis_pembayaran,
-                'harga_satuan_kegiatan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->nominal_per_satuan,
+                'harga_satuan_kegiatan_pendataan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->nominal_per_satuan,
+                'harga_satuan_kegiatan_pengolahan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->nominal_per_satuan_pengolahan,
+                'harga_satuan_kegiatan_pml' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->nominal_per_satuan_pml,
                 'status_honor_kegiatan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->sudah_dialokasikan_honor,
                 'jenis_kegiatan_survei' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->jenis_kegiatan,
                 'jenis_survei_diikuti' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->daftar_kegiatan_survei,
@@ -106,7 +109,7 @@ class HonorMitraController extends Controller
                 RateHonor::updateOrCreate(['id_mitra' => $mitra_value->id, 'kegiatan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->daftar_kegiatan_survei,], [
                     'nama_mitra' => $mitra_value->nama,
                     'alamat_mitra' => $mitra_value->alamat_detail,
-                    'jenis_pekerjaan' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->jenis_kegiatan,
+                    'jenis_pekerjaan' => $request->peranMitra[$mitra_value->id],
                     'jenis_pembayaran_mitra' => DaftarSurveiModel::where('daftar_kegiatan_survei', Session::get('sample')['nama_kegiatan_survei'])->first()->jenis_pembayaran,
                     'volume_pembayaran_mitra' => $request->volume[$mitra_value->id],
                     'honor' => (float) filter_var(substr_replace(str_replace('.', ',', $request->honor[$mitra_value->id]), '.', -4, 3), FILTER_SANITIZE_NUMBER_FLOAT),

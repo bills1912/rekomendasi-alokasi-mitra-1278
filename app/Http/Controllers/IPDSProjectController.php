@@ -16,7 +16,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Laravel\Socialite\Facades\Socialite;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -139,7 +138,7 @@ class IPDSProjectController extends Controller
 
     public function uploadSampleBlokSensus()
     {
-        // dd((int)$_COOKIE['jumlah-mitra-terpilih']);
+        // dd($_COOKIE['ids']);
         return view('alokasi.upload-sample-bs');
     }
 

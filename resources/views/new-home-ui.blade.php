@@ -1,25 +1,17 @@
-<!doctype html>
-<!--
-* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
-* @version 1.0.0-beta20
-* @link https://tabler.io
-* Copyright 2018-2023 The Tabler Authors
-* Copyright 2018-2023 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
--->
-<html lang="en">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Dashboard - New UI of SeeMitra</title>
     <!-- CSS files -->
-    <link href="{{ url('dist/new-home/') }}/css/tabler.min.css?1692870487" rel="stylesheet" />
-    <link href="{{ url('dist/new-home/') }}/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
-    <link href="{{ url('dist/new-home/') }}/css/tabler-payments.min.css?1692870487" rel="stylesheet" />
-    <link href="{{ url('dist/new-home/') }}/css/tabler-vendors.min.css?1692870487" rel="stylesheet" />
-    <link href="{{ url('dist/new-home/') }}/css/demo.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ url('dist/new-home') }}/css/tabler.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ url('dist/new-home') }}/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ url('dist/new-home') }}/css/tabler-payments.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ url('dist/new-home') }}/css/tabler-vendors.min.css?1692870487" rel="stylesheet" />
+    <link href="{{ url('dist/new-home') }}/css/demo.min.css?1692870487" rel="stylesheet" />
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -34,7 +26,7 @@
 </head>
 
 <body>
-    <script src="{{ url('dist/new-home/') }}/js/demo-theme.min.js?1692870487"></script>
+    <script src="{{ url('dist/new-home') }}/js/demo-theme.min.js?1692870487"></script>
     <div class="page">
         <!-- Sidebar -->
         <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
@@ -45,7 +37,7 @@
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark">
                     <a href=".">
-                        <img src="{{ url('dist/new-home/') }}ic/logo.svg" width="110" height="32" alt="Tabler"
+                        <img src="{{ url('dist/new-home') }}/ic/logo.svg" width="110" height="32" alt="Tabler"
                             class="navbar-brand-image">
                     </a>
                 </h1>
@@ -234,7 +226,7 @@
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                             aria-label="Open user menu">
                             <span class="avatar avatar-sm"
-                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000m.jpg)"></span>
+                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/000m.jpg)"></span>
                             <div class="d-none d-xl-block ps-2">
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="mt-1 small text-secondary">Web Developer</div>
@@ -242,10 +234,10 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             <a href="#" class="dropdown-item">Status</a>
-                            <a href="{{ url('dist/new-home/') }}ile.html" class="dropdown-item">Profile</a>
+                            <a href="profile.html" class="dropdown-item">Profile</a>
                             <a href="#" class="dropdown-item">Feedback</a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ url('dist/new-home/') }}ings.html" class="dropdown-item">Settings</a>
+                            <a href="settings.html" class="dropdown-item">Settings</a>
                             <a class="dropdown-item">
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
@@ -263,484 +255,21 @@
                             <a class="nav-link" href="/">
                                 <span
                                     class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-list-check">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                                        <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
+                                        <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
+                                        <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
+                                        <path d="M11 6l9 0" />
+                                        <path d="M11 12l9 0" />
+                                        <path d="M11 18l9 0" />
                                     </svg>
                                 </span>
                                 <span class="nav-link-title">
-                                    Home
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                                data-bs-auto-close="false" role="button" aria-expanded="false">
-                                <span
-                                    class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
-                                        <path d="M12 12l8 -4.5" />
-                                        <path d="M12 12l0 9" />
-                                        <path d="M12 12l-8 -4.5" />
-                                        <path d="M16 5.25l-8 4.5" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Interface
-                                </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ts.html">
-                                            Alerts
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}rdion.html">
-                                            Accordion
-                                        </a>
-                                        <div class="dropend">
-                                            <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication"
-                                                data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                                                aria-expanded="false">
-                                                Authentication
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a href="-in.html" class="dropdown-item">
-                                                    Sign in
-                                                </a>
-                                                <a href="-in-link.html" class="dropdown-item">
-                                                    Sign in link
-                                                </a>
-                                                <a href="-in-illustration.html" class="dropdown-item">
-                                                    Sign in with illustration
-                                                </a>
-                                                <a href="-in-cover.html" class="dropdown-item">
-                                                    Sign in with cover
-                                                </a>
-                                                <a href="-up.html" class="dropdown-item">
-                                                    Sign up
-                                                </a>
-                                                <a href="ot-password.html" class="dropdown-item">
-                                                    Forgot password
-                                                </a>
-                                                <a href="s-of-service.html" class="dropdown-item">
-                                                    Terms of service
-                                                </a>
-                                                <a href="-lock.html" class="dropdown-item">
-                                                    Lock screen
-                                                </a>
-                                                <a href="2-ep-verification.html" class="dropdown-item">
-                                                    2 step verification
-                                                </a>
-                                                <a href="2-ep-verification-code.html" class="dropdown-item">
-                                                    2 step verification code
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}k.html">
-                                            Blank page
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}es.html">
-                                            Badges
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ons.html">
-                                            Buttons
-                                        </a>
-                                        <div class="dropend">
-                                            <a class="dropdown-item dropdown-toggle" href="#sidebar-cards"
-                                                data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                                                aria-expanded="false">
-                                                Cards
-                                                <span
-                                                    class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a href="{{ url('dist/new-home/') }}s.html" class="dropdown-item">
-                                                    Sample cards
-                                                </a>
-                                                <a href="{{ url('dist/new-home/') }}-actions.html"
-                                                    class="dropdown-item">
-                                                    Card actions
-                                                    <span
-                                                        class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a href="{{ url('dist/new-home/') }}s-masonry.html"
-                                                    class="dropdown-item">
-                                                    Cards Masonry
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}usel.html">
-                                            Carousel
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ts.html">
-                                            Charts
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}rs.html">
-                                            Colors
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}rpicker.html">
-                                            Color picker
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}grid.html">
-                                            Data grid
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}tables.html">
-                                            Datatables
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}downs.html">
-                                            Dropdowns
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}zone.html">
-                                            Dropzone
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <div class="dropend">
-                                            <a class="dropdown-item dropdown-toggle" href="#sidebar-error"
-                                                data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
-                                                aria-expanded="false">
-                                                Error pages
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a href="{{ url('dist/new-home/') }}r-404.html"
-                                                    class="dropdown-item">
-                                                    404 page
-                                                </a>
-                                                <a href="{{ url('dist/new-home/') }}r-500.html"
-                                                    class="dropdown-item">
-                                                    500 page
-                                                </a>
-                                                <a href="{{ url('dist/new-home/') }}r-maintenance.html"
-                                                    class="dropdown-item">
-                                                    Maintenance page
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}s.html">
-                                            Flags
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ne-player.html">
-                                            Inline player
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                    </div>
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}tbox.html">
-                                            Lightbox
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}s.html">
-                                            Lists
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ls.html">
-                                            Modal
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}.html">
-                                            Map
-                                        </a>
-                                        <a class="dropdown-item" href="mapfullsize.html">
-                                            Map fullsize
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}-vector.html">
-                                            Map vector
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}down.html">
-                                            Markdown
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}gation.html">
-                                            Navigation
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}anvas.html">
-                                            Offcanvas
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}nation.html">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/pie-chart -->
-                                            Pagination
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}eholder.html">
-                                            Placeholder
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}s.html">
-                                            Steps
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}s-rating.html">
-                                            Stars rating
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}.html">
-                                            Tabs
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}.html">
-                                            Tags
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}es.html">
-                                            Tables
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}graphy.html">
-                                            Typography
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}mce.html">
-                                            TinyMCE
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('dist/new-home/') }}-elements.html">
-                                <span
-                                    class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M9 11l3 3l8 -8" />
-                                        <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Forms
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                                data-bs-auto-close="false" role="button" aria-expanded="false">
-                                <span
-                                    class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Extra
-                                </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}y.html">
-                                            Empty page
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ie-banner.html">
-                                            Cookie banner
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}.html">
-                                            Chat
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}vity.html">
-                                            Activity
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ery.html">
-                                            Gallery
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ice.html">
-                                            Invoice
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ch-results.html">
-                                            Search results
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ing.html">
-                                            Pricing cards
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ing-table.html">
-                                            Pricing table
-                                        </a>
-                                        <a class="dropdown-item" href="faqhtml">
-                                            FAQ
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}s.html">
-                                            Users
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}nse.html">
-                                            License
-                                        </a>
-                                    </div>
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}.html">
-                                            Logs
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}c.html">
-                                            Music
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ogrid.html">
-                                            Photogrid
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}s.html">
-                                            Tasks
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}me.html">
-                                            Uptime monitor
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ets.html">
-                                            Widgets
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}rd.html">
-                                            Wizard
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ings.html">
-                                            Settings
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}l-ended.html">
-                                            Trial ended
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="joblisting.html">
-                                            Job listing
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}-loader.html">
-                                            Page loader
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item active dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
-                                data-bs-auto-close="false" role="button" aria-expanded="true">
-                                <span
-                                    class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                                        <path
-                                            d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                                        <path
-                                            d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                                        <path
-                                            d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Layout
-                                </span>
-                            </a>
-                            <div class="dropdown-menu show">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-horizontal.html">
-                                            Horizontal
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ut-boxed.html">
-                                            Boxed
-                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ut-vertical.html">
-                                            Vertical
-                                        </a>
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-vertical-transparent.html">
-                                            Vertical transparent
-                                        </a>
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-vertical-right.html">
-                                            Right vertical
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ut-condensed.html">
-                                            Condensed
-                                        </a>
-                                        <a class="dropdown-item active"
-                                            href="{{ url('dist/new-home/') }}ut-combo.html">
-                                            Combined
-                                        </a>
-                                    </div>
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-navbar-dark.html">
-                                            Navbar dark
-                                        </a>
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-navbar-sticky.html">
-                                            Navbar sticky
-                                        </a>
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-navbar-overlap.html">
-                                            Navbar overlap
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ut-rtl.html">
-                                            RTL mode
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('dist/new-home/') }}ut-fluid.html">
-                                            Fluid
-                                        </a>
-                                        <a class="dropdown-item"
-                                            href="{{ url('dist/new-home/') }}ut-fluid-vertical.html">
-                                            Fluid vertical
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('dist/new-home/') }}s.html">
-                                <span
-                                    class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M5 11a7 7 0 0 1 14 0v7a1.78 1.78 0 0 1 -3.1 1.4a1.65 1.65 0 0 0 -2.6 0a1.65 1.65 0 0 1 -2.6 0a1.65 1.65 0 0 0 -2.6 0a1.78 1.78 0 0 1 -3.1 -1.4v-7" />
-                                        <path d="M10 10l.01 0" />
-                                        <path d="M14 10l.01 0" />
-                                        <path d="M10 14a3.5 3.5 0 0 0 4 0" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    4637 icons
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('dist/new-home/') }}ls.html">
-                                <span
-                                    class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/mail-opened -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M3 9l9 6l9 -6l-9 -6l-9 6" />
-                                        <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
-                                        <path d="M3 19l6 -6" />
-                                        <path d="M15 13l6 6" />
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Email templates
+                                    Daftar Kegiatan
                                 </span>
                             </a>
                         </li>
@@ -770,7 +299,7 @@
                                     rel="noopener">
                                     Documentation
                                 </a>
-                                <a class="dropdown-item" href="{{ url('dist/new-home/') }}gelog.html">
+                                <a class="dropdown-item" href="{{ url('dist/new-home') }}gelog.html">
                                     Changelog
                                 </a>
                                 <a class="dropdown-item" href="https://github.com/tabler/tabler" target="_blank"
@@ -962,19 +491,24 @@
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                             aria-label="Open user menu">
                             <span class="avatar avatar-sm"
-                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000m.jpg)"></span>
+                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/000m.jpg)"></span>
                             <div class="d-none d-xl-block ps-2">
-                                <div>Paweł Kuna</div>
-                                <div class="mt-1 small text-secondary">UI Designer</div>
+                                <div>{{ Auth::user()->name }}</div>
+                                <div class="mt-1 small text-secondary">Web Developer</div>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             <a href="#" class="dropdown-item">Status</a>
-                            <a href="{{ url('dist/new-home/') }}ile.html" class="dropdown-item">Profile</a>
+                            <a href="{{ url('dist/new-home') }}ile.html" class="dropdown-item">Profile</a>
                             <a href="#" class="dropdown-item">Feedback</a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ url('dist/new-home/') }}ings.html" class="dropdown-item">Settings</a>
-                            <a href="{{ url('dist/new-home/') }}-in.html" class="dropdown-item">Logout</a>
+                            <a href="{{ url('dist/new-home') }}ings.html" class="dropdown-item">Settings</a>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <a class="dropdown-item"
+                                    onclick="event.preventDefault(); this.closest('form').submit();"
+                                    href="{{ route('logout') }}">Logout</a>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1423,7 +957,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/002m.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/002m.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1441,7 +975,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/003m.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/003m.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1459,7 +993,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/000f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1477,7 +1011,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/001f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/001f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1505,7 +1039,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/002f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/002f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1520,7 +1054,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/003f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/003f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1550,7 +1084,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/006m.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/006m.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1565,7 +1099,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/004f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/004f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1579,7 +1113,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/007m.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/007m.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1608,7 +1142,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/009m.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/009m.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1623,7 +1157,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/010m.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/010m.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1637,7 +1171,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/005f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/005f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1652,7 +1186,7 @@
                                                     <div class="row">
                                                         <div class="col-auto">
                                                             <span class="avatar"
-                                                                style="background-image: url({{ url('dist/new-home/') }}ic/avatars/006f.jpg)"></span>
+                                                                style="background-image: url({{ url('dist/new-home') }}ic/avatars/006f.jpg)"></span>
                                                         </div>
                                                         <div class="col">
                                                             <div class="text-truncate">
@@ -1728,7 +1262,7 @@
                                             <tr>
                                                 <td class="w-1">
                                                     <span class="avatar avatar-sm"
-                                                        style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000m.jpg)"></span>
+                                                        style="background-image: url({{ url('dist/new-home') }}ic/avatars/000m.jpg)"></span>
                                                 </td>
                                                 <td class="td-truncate">
                                                     <div class="text-truncate">
@@ -1751,7 +1285,7 @@
                                             <tr>
                                                 <td class="w-1">
                                                     <span class="avatar avatar-sm"
-                                                        style="background-image: url({{ url('dist/new-home/') }}ic/avatars/002m.jpg)"></span>
+                                                        style="background-image: url({{ url('dist/new-home') }}ic/avatars/002m.jpg)"></span>
                                                 </td>
                                                 <td class="td-truncate">
                                                     <div class="text-truncate">
@@ -1763,7 +1297,7 @@
                                             <tr>
                                                 <td class="w-1">
                                                     <span class="avatar avatar-sm"
-                                                        style="background-image: url({{ url('dist/new-home/') }}ic/avatars/003m.jpg)"></span>
+                                                        style="background-image: url({{ url('dist/new-home') }}ic/avatars/003m.jpg)"></span>
                                                 </td>
                                                 <td class="td-truncate">
                                                     <div class="text-truncate">
@@ -1775,7 +1309,7 @@
                                             <tr>
                                                 <td class="w-1">
                                                     <span class="avatar avatar-sm"
-                                                        style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000f.jpg)"></span>
+                                                        style="background-image: url({{ url('dist/new-home') }}ic/avatars/000f.jpg)"></span>
                                                 </td>
                                                 <td class="td-truncate">
                                                     <div class="text-truncate">
@@ -1999,7 +1533,7 @@
                         <div class="col-md-6 col-lg-4">
                             <a href="https://github.com/sponsors/codecalm" class="card card-sponsor"
                                 target="_blank" rel="noopener"
-                                style="background-image: url({{ url('dist/new-home/') }}ic/sponsor-banner-homepage.svg)"
+                                style="background-image: url({{ url('dist/new-home') }}ic/sponsor-banner-homepage.svg)"
                                 aria-label="Sponsor Tabler!">
                                 <div class="card-body"></div>
                             </a>
@@ -2149,7 +1683,7 @@
                                             </td>
                                             <td>
                                                 <span class="avatar avatar-sm"
-                                                    style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000m.jpg)"></span>
+                                                    style="background-image: url({{ url('dist/new-home') }}ic/avatars/000m.jpg)"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -2265,7 +1799,7 @@
                                             </td>
                                             <td>
                                                 <span class="avatar avatar-sm"
-                                                    style="background-image: url({{ url('dist/new-home/') }}ic/avatars/002m.jpg)"></span>
+                                                    style="background-image: url({{ url('dist/new-home') }}ic/avatars/002m.jpg)"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -2324,7 +1858,7 @@
                                             </td>
                                             <td>
                                                 <span class="avatar avatar-sm"
-                                                    style="background-image: url({{ url('dist/new-home/') }}ic/avatars/003m.jpg)"></span>
+                                                    style="background-image: url({{ url('dist/new-home') }}ic/avatars/003m.jpg)"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -2382,7 +1916,7 @@
                                             </td>
                                             <td>
                                                 <span class="avatar avatar-sm"
-                                                    style="background-image: url({{ url('dist/new-home/') }}ic/avatars/000f.jpg)"></span>
+                                                    style="background-image: url({{ url('dist/new-home') }}ic/avatars/000f.jpg)"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -2440,7 +1974,7 @@
                                             </td>
                                             <td>
                                                 <span class="avatar avatar-sm"
-                                                    style="background-image: url({{ url('dist/new-home/') }}ic/avatars/001f.jpg)"></span>
+                                                    style="background-image: url({{ url('dist/new-home') }}ic/avatars/001f.jpg)"></span>
                                             </td>
                                         </tr>
                                     </table>
@@ -2841,7 +2375,7 @@
                             <ul class="list-inline list-inline-dots mb-0">
                                 <li class="list-inline-item"><a href="https://tabler.io/docs" target="_blank"
                                         class="link-secondary" rel="noopener">Documentation</a></li>
-                                <li class="list-inline-item"><a href="{{ url('dist/new-home/') }}nse.html"
+                                <li class="list-inline-item"><a href="{{ url('dist/new-home') }}nse.html"
                                         class="link-secondary">License</a></li>
                                 <li class="list-inline-item"><a href="https://github.com/tabler/tabler"
                                         target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
@@ -2871,7 +2405,7 @@
                                     All rights reserved.
                                 </li>
                                 <li class="list-inline-item">
-                                    <a href="{{ url('dist/new-home/') }}gelog.html" class="link-secondary"
+                                    <a href="{{ url('dist/new-home') }}gelog.html" class="link-secondary"
                                         rel="noopener">
                                         v1.0.0-beta20
                                     </a>
@@ -2999,13 +2533,13 @@
         </div>
     </div>
     <!-- Libs JS -->
-    <script src="{{ url('dist/new-home/') }}/libs/apexcharts/dist/apexcharts.min.js?1692870487" defer></script>
-    <script src="{{ url('dist/new-home/') }}/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487" defer></script>
-    <script src="{{ url('dist/new-home/') }}/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
-    <script src="{{ url('dist/new-home/') }}/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
+    <script src="{{ url('dist/new-home') }}/libs/apexcharts/dist/apexcharts.min.js?1692870487" defer></script>
+    <script src="{{ url('dist/new-home') }}/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487" defer></script>
+    <script src="{{ url('dist/new-home') }}/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
+    <script src="{{ url('dist/new-home') }}/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
     <!-- Tabler Core -->
-    <script src="{{ url('dist/new-home/') }}/js/tabler.min.js?1692870487" defer></script>
-    <script src="{{ url('dist/new-home/') }}/js/demo.min.js?1692870487" defer></script>
+    <script src="{{ url('dist/new-home') }}/js/tabler.min.js?1692870487" defer></script>
+    <script src="{{ url('dist/new-home') }}/js/demo.min.js?1692870487" defer></script>
     <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function() {

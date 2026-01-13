@@ -19,6 +19,8 @@ class DaftarSurveiModel extends Model
         'jenis_pembayaran',
         'jumlah_satuan',
         'nominal_per_satuan',
+        'nominal_per_satuan_pml',
+        'nominal_per_satuan_pengolahan',
         'total_anggaran',
         'jumlah_petugas_kegiatan',
         'periode_pencairan_honor',

@@ -194,9 +194,28 @@ $('#daftar-mitra-all').on('change', '.dt-checkboxes', function (e) {
     }
 });
 
-$('#nominalperSatuan').on('change', function () {
-    $('#totalAnggaranKegiatan').val(RupiahCurrency.format(parseInt($('#jumlahSatuan').val()) * parseFloat($('#nominalperSatuan').val().replace(/\./g, '').replace(/^\D+/g, '')).toFixed(3)))
+$('#jenisKegiatan').on('change', function () {
+    if ($(this).val() == "Pendataan + Pengolahan") {
+        $('#formNominalPerSatuanPengolahan').removeAttr('hidden');
+        $('#formNominalPerSatuanPML').attr('hidden', true);
+    } else if ($(this).val() == "Pendataan + PML Mitra") {
+        $('#formNominalPerSatuanPML').removeAttr('hidden');
+        $('#formNominalPerSatuanPengolahan').attr('hidden', true);
+    } else if ($(this).val() == "Pendataan + Pengolahan + PML Mitra") {
+        $('#formNominalPerSatuanPengolahan').removeAttr('hidden');
+        $('#formNominalPerSatuanPML').removeAttr('hidden');
+    } else {
+        $('#formNominalPerSatuanPengolahan').attr('hidden', true);
+        $('#formNominalPerSatuanPML').attr('hidden', true);
+    }
 });
+
+$('#nominalperSatuan').on('change', function () {
+    $('#totalAnggaranKegiatan').val(RupiahCurrency.format(parseInt($('#jumlahSatuan').val()) * (
+        (parseFloat($('#nominalperSatuan').val().replace(/\./g, '').replace(/^\D+/g, ''))).toFixed(3)
+    )))
+});
+
 
 $('#btnSimulasiHonorPerMitra').on('click', function () {
     $('#simulasiTotalHonorPerMitra').val(RupiahCurrency.format(parseFloat($('#totalAnggaranKegiatan').val().replace('.', '').replace('.', '')

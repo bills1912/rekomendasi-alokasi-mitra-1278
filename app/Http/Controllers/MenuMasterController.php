@@ -14,13 +14,19 @@ use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
+
 
 class MenuMasterController extends Controller
 {
     // New UI
     public function newUIPage()
     {
-        return view('new-home-ui');
+        if (Auth::check() && Auth::user()->is_sm) {
+            return view('new-home-ui');
+        } else {
+            return view('mitra_view.container.mitra_index');
+        }
     }
     // Daftar Kegiatan
     public function daftarKegiatanPage()
@@ -47,7 +53,8 @@ class MenuMasterController extends Controller
             'jenis_pembayaran' => $request->input('jenisPembayaran'),
             'jumlah_satuan' => $request->input('jumlahSatuan'),
             'nominal_per_satuan_pml' => (float)filter_var($request->input('nominalperSatuanPML'), FILTER_SANITIZE_NUMBER_FLOAT),
-            'nominal_per_satuan' => (float)filter_var($request->input('nominalperSatuanPCL'), FILTER_SANITIZE_NUMBER_FLOAT),
+            'nominal_per_satuan_pengolahan' => (float)filter_var($request->input('nominalperSatuanPengolahan'), FILTER_SANITIZE_NUMBER_FLOAT),
+            'nominal_per_satuan' => (float)filter_var($request->input('nominalperSatuan'), FILTER_SANITIZE_NUMBER_FLOAT),
             'total_anggaran' => $request->input('jumlahSatuan') * (float)filter_var($request->input('nominalperSatuan'), FILTER_SANITIZE_NUMBER_FLOAT),
             'jumlah_petugas_kegiatan' => $request->input('jumlahPetugasKegiatan'),
             'periode_pencairan_honor' => $request->input('periodePencairanAnggaran'),

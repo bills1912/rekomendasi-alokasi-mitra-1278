@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Dashboard</h1>
-        <div class="row justify-content-center">
+        {{-- <div class="row justify-content-center">
             <div class="col-xl-11">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -45,6 +45,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection

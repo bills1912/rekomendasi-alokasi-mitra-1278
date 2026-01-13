@@ -256,7 +256,7 @@
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted"><img class="logo-bps" src="{{ url('/') }}/img/logo_bps.png"
-                                alt=""> BPS Kota Gunungstioli
+                                alt=""> BPS Kabupaten Langkat
                             {{ date('Y') }} &copy;</div>
                     </div>
                 </div>

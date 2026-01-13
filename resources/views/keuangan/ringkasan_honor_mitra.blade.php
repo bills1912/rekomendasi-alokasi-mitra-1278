@@ -114,15 +114,13 @@
                                         <label class="col-sm-4 required" for="copyTanggalSPKinBAST">Tanggal
                                             Surat SPK:</label>
                                         <input class="form-control" type="text" name="copyTanggalSPKinBAST"
-                                            id="copyTanggalSPKinBAST"
-                                            placeholder="Tanggal SPK">
+                                            id="copyTanggalSPKinBAST" placeholder="Tanggal SPK">
                                     </div>
                                     <div class="form-group flex-group">
                                         <label class="col-sm-4 required" for="copyTanggalKegiatanBerakhir">Tanggal
                                             BAST:</label>
                                         <input class="form-control" type="text" name="copyTanggalKegiatanBerakhir"
-                                            id="copyTanggalKegiatanBerakhir"
-                                            placeholder="Salin Tanggal Kegiatan Berakhir">
+                                            id="copyTanggalKegiatanBerakhir" placeholder="Salin Tanggal Kegiatan Berakhir">
                                     </div>
                                     <div class="form-group flex-group">
                                         <label class="col-sm-4 required" for="copyBulanKegiatanBerakhir">Bulan
@@ -177,8 +175,7 @@
                                         <label class="col-sm-4 required" for="copyTanggalGenerateSPK">Tanggal
                                             SPK:</label>
                                         <input class="form-control" type="text" name="copyTanggalGenerateSPK"
-                                            id="copyTanggalGenerateSPK" value="2"
-                                            placeholder="Salin Tanggal Kegiatan Berakhir" readonly>
+                                            id="copyTanggalGenerateSPK" placeholder="Salin Tanggal Kegiatan Berakhir">
                                     </div>
                                     <div class="form-group flex-group">
                                         <label class="col-sm-4 required" for="copyBulanSPK">Bulan

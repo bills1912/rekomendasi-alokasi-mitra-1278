@@ -86,10 +86,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Nama Mitra</th>
-                                                <th>Alamat Mitra</th>
-                                                <th>Kegiatan Survei yang Diikuti</th>
-                                                <th>Jenis Pekerjaan</th>
                                                 <th>Jenis Pembayaran</th>
+                                                <th>Peran Mitra</th>
                                                 <th>Volume</th>
                                                 <th>Honor Dialokasikan</th>
                                             </tr>
@@ -98,10 +96,18 @@
                                             @foreach ($mitra_teralokasi as $mitra_survei_terpilih)
                                                 <tr>
                                                     <td>{{ $mitra_survei_terpilih->nama }}</td>
-                                                    <td>{{ $mitra_survei_terpilih->alamat_detail }}</td>
-                                                    <td>{{ $jenis_survei_diikuti }}</td>
-                                                    <td>{{ $jenis_kegiatan_survei }}</td>
                                                     <td>{{ $jenis_pembayaran_kegiatan }}</td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <select name="peranMitra[{{ $mitra_survei_terpilih->id }}]"
+                                                                id="peranUtamaMitra{{ $mitra_survei_terpilih->id }}"
+                                                                class="form-select">
+                                                                <option value="pcl">PCL Pendataan</option>
+                                                                <option value="pengolahan">Pengolahan</option>
+                                                                <option value="pml">PML</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                         <div class="form-group">
                                                             <input type="number"
@@ -126,7 +132,11 @@
                                                         $('#rate-honor-mitra').on('input', '#volumeHonor{{ $mitra_survei_terpilih->id }}', function() {
                                                             $('#harga{{ $mitra_survei_terpilih->id }}').val(RupiahCurrency.format($(
                                                                     '#volumeHonor{{ $mitra_survei_terpilih->id }}').val() *
-                                                                '{{ $harga_satuan_kegiatan }}'))
+                                                                ($('#peranUtamaMitra{{ $mitra_survei_terpilih->id }}').val() == 'pcl' ?
+                                                                    '{{ $harga_satuan_kegiatan_pendataan }}' : ($(
+                                                                            '#peranUtamaMitra{{ $mitra_survei_terpilih->id }}').val() == 'pengolahan' ?
+                                                                        '{{ $harga_satuan_kegiatan_pengolahan }}' : '{{ $harga_satuan_kegiatan_pml }}'))
+                                                            ));
                                                         });
                                                     </script>
                                                 @endpush
