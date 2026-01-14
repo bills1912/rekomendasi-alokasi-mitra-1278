@@ -64,6 +64,7 @@ Route::post('/list_mitra_survei_teralokasi/{id}', [IPDSProjectController::class,
 Route::get('/list_mitra_survei_teralokasi/{id}', [IPDSProjectController::class, 'hapusDataMitraSurveiTeralokasi']);
 
 Route::get('initializeSurvei', [IPDSProjectController::class, 'inisialisasiKegiatanSurvei']);
+Route::get('initializeSurveiBAST', [IPDSProjectController::class, 'inisialisasiKegiatanSurveiGenerateBAST']);
 
 Route::get('selectProvSensus', [IPDSProjectSLSController::class, 'pilihProvinsiSensus']);
 Route::get('selectRegencySensus/{id_kako}', [IPDSProjectSLSController::class, 'pilihKakoSensus']);

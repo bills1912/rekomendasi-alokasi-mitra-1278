@@ -167,19 +167,13 @@ class HonorMitraController extends Controller
                 'alamat_mitra' => $value['alamat'],
                 'tahun_kegiatan' => date('Y'),
                 'tahun_kata' => $numberToWords->getNumberTransformer('id')->toWords(date('Y')),
-                'nomor_spk' => Carbon::createFromDate(
-                    (int)$request->input('tahunGenerateSPK'),
-                    (int)$request->input('copyBulanSPK'),
-                    (int)$request->input('copyTanggalGenerateSPK'),
-                    'Asia/Jakarta'
-                )->translatedFormat('j') . "." .
-                    Carbon::createFromDate(
+                'nomor_spk' => ($idx + 1) . "/PPK/PPIS/SPK/" .
+                Carbon::createFromDate(
                         (int)$request->input('tahunGenerateSPK'),
                         (int)$request->input('copyBulanSPK'),
                         (int)$request->input('copyTanggalGenerateSPK'),
                         'Asia/Jakarta'
-                    )->translatedFormat('n') . "." .
-                    ($idx + 1) . "/PPK/PPIS/SPK/" . date('Y'),
+                    )->translatedFormat('n') . date('Y'),
                 'tanggal_mulai_spk' => Carbon::createFromDate(
                     (int)$request->input('tahunGenerateSPK'),
                     (int)$request->input('copyBulanSPK'),
@@ -198,6 +192,8 @@ class HonorMitraController extends Controller
                 'volume_satuan' => '${volume_satuan_' . $idx . '}',
                 'jenis_pembayaran' => '${jenis_pembayaran_' . $idx . '}',
                 'kegiatanMitra' => '${kegiatanMitra_' . $idx . '}',
+                'tanggal_mulai_kegiatan' => '${tanggal_mulai_kegiatan_' . $idx . '}',
+                'tanggal_berakhir_kegiatan' => '${tanggal_berakhir_kegiatan_' . $idx . '}',
                 'hargaSatuan' => '${hargaSatuan_' . $idx . '}',
                 'honorMitra' => '${honorMitra_' . $idx . '}',
                 'bebanAnggaran' => '${bebanAnggaran_' . $idx . '}',
@@ -226,6 +222,8 @@ class HonorMitraController extends Controller
                     "volume_satuan_{$i}" => $row['volume_pembayaran'],
                     "jenis_pembayaran_{$i}" => $row['jenis_pembayaran'],
                     "kegiatanMitra_{$i}" => $row['kegiatan'],
+                    "tanggal_mulai_kegiatan_{$i}" => DaftarSurveiModel::where('daftar_kegiatan_survei', $row['kegiatan'])->first()->waktu_mulai,
+                    "tanggal_berakhir_kegiatan_{$i}" => DaftarSurveiModel::where('daftar_kegiatan_survei', $row['kegiatan'])->first()->waktu_berakhir,
                     "hargaSatuan_{$i}" => "Rp" . number_format(DaftarSurveiModel::where('daftar_kegiatan_survei', $row['kegiatan'])->first()->nominal_per_satuan, 0, ',', '.') . ",-",
                     "honorMitra_{$i}" => "Rp" . number_format($row['honor'], 0, ',', '.') . ",-",
                     "bebanAnggaran_{$i}" => DaftarSurveiModel::where('daftar_kegiatan_survei', $row['kegiatan'])->first()->kode_beban_anggaran,
@@ -249,7 +247,7 @@ class HonorMitraController extends Controller
     public function generateBAST(Request $request)
     {
         Carbon::setLocale('id');
-        $kegiatan_filter_bulan = DaftarSurveiModel::where('periode_pencairan_honor', 'LIKE', '%' . Carbon::createFromDate(
+        $kegiatan_filter_bulan = DaftarSurveiModel::where('daftar_kegiatan_survei', $request->input('initializeSurveiBAST'))->where('periode_pencairan_honor', 'LIKE', '%' . Carbon::createFromDate(
             (int)$request->input('tahunGenerateBAST'),
             (int)$request->input('copyBulanKegiatanBerakhir'),
             (int)$request->input('copyTanggalKegiatanBerakhir'),
@@ -289,24 +287,13 @@ class HonorMitraController extends Controller
                 )->translatedFormat('F'),
                 'nama_mitra' => $value['nama'],
                 'alamat_mitra' => $value['alamat'],
-                'nomor_bast' => Carbon::createFromDate(
-                    (int)$request->input('tahunGenerateBAST'),
-                    (int)$request->input('copyBulanKegiatanBerakhir'),
-                    (int)$request->input('copyTanggalKegiatanBerakhir'),
-                    'Asia/Jakarta'
-                )->translatedFormat('d') . "." .
+                'nomor_bast' =>($idx_bast + 1) . "/PPK/PPIS/BAST/" . 
                     Carbon::createFromDate(
                         (int)$request->input('tahunGenerateBAST'),
                         (int)$request->input('copyBulanKegiatanBerakhir'),
                         (int)$request->input('copyTanggalKegiatanBerakhir'),
                         'Asia/Jakarta'
-                    )->translatedFormat('m') . "." .
-                    ($idx_bast + 1) . "/PPK/PPIS/BAST/" . Carbon::createFromDate(
-                        (int)$request->input('tahunGenerateBAST'),
-                        (int)$request->input('copyBulanKegiatanBerakhir'),
-                        (int)$request->input('copyTanggalKegiatanBerakhir'),
-                        'Asia/Jakarta'
-                    )->translatedFormat('Y'),
+                    )->translatedFormat('m') . date('Y'),
                 'tahun_kegiatan' => Carbon::createFromDate(
                     (int)$request->input('tahunGenerateBAST'),
                     (int)$request->input('copyBulanKegiatanBerakhir'),
@@ -349,11 +336,41 @@ class HonorMitraController extends Controller
                     (int)$request->input('copyTanggalKegiatanBerakhir'),
                     'Asia/Jakarta'
                 )->translatedFormat('j F Y '),
+                'no' => '${no_' . $idx_bast . '}',
+                'kegiatanMitra' => '${kegiatanMitra_' . $idx_bast . '}',
+                'volume_satuan' => '${volume_satuan_' . $idx_bast . '}',
+                'jenis_pembayaran' => '${jenis_pembayaran_' . $idx_bast . '}',
             ];
             $idx_bast++;
         }
         $templateBAST = new TemplateProcessor('assets/doc_template/BAST_template.docx');
         $templateBAST->cloneBlock('bast', sizeof($data_mitra_bast), true, false, $arr_mitra);
+        $i = 0;
+        $groupData = [];
+        foreach ($data_mitra_bast as $field => $value) {
+            $groupData[$value->id_mitra][] = [
+                'id' => $value->id_mitra,
+                'kegiatan' => $value->kegiatan,
+                'volume_pembayaran' => $value->volume_pembayaran_mitra,
+                'jenis_pembayaran' => $value->jenis_pembayaran_mitra,
+                'honor' => $value->honor,
+            ];
+        }
+        foreach ($groupData as $group) {
+            $arr_mitra_honor = array();
+            $j = 1;
+            foreach ($group as $row) {
+                $arr_mitra_honor[] = array(
+                    "no_{$i}" => $j,
+                    "volume_satuan_{$i}" => $row['volume_pembayaran'],
+                    "jenis_pembayaran_{$i}" => $row['jenis_pembayaran'],
+                    "kegiatanMitra_{$i}" => $row['kegiatan'],
+                );
+                $j++;
+            }
+            $templateBAST->cloneRowAndSetValues("no_{$i}", $arr_mitra_honor);
+            $i++;
+        }
         $savePath = 'BAST ' . $request->input('pilihKegiatanGenerateBAST') . ' - ' . Carbon::createFromDate(
             (int)$request->input('tahunGenerateBAST'),
             (int)$request->input('copyBulanKegiatanBerakhir'),

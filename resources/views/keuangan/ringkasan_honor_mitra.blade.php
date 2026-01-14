@@ -108,7 +108,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ url('/generate_surat_bast') }}" method="POST">
+                                <form action="{{ url('/generate_surat_bast') }}" method="POST" id="bast-generator">
                                     @csrf
                                     <div class="form-group flex-group">
                                         <label class="col-sm-4 required" for="copyTanggalSPKinBAST">Tanggal
@@ -148,6 +148,11 @@
                                         <label class="col-sm-4 required" for="tahunGenerateBAST">Tahun BAST:</label>
                                         <input class="form-control" type="text" name="tahunGenerateBAST"
                                             id="tahunGenerateBAST" value="{{ date('Y') }}" readonly>
+                                    </div>
+                                    <div class="form-group flex-group">
+                                        <label class="col-sm-4 required" for="namaKegiatanSurvei">Kegiatan Survei</label>
+                                        <select class="form-select" id="initializeSurveiBAST"
+                                            name="initializeSurveiBAST"></select>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary"><i

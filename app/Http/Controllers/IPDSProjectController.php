@@ -260,6 +260,12 @@ class IPDSProjectController extends Controller
         return response()->json($data);
     }
 
+    public function inisialisasiKegiatanSurveiGenerateBAST()
+    {
+        $data = DaftarSurveiModel::where('daftar_kegiatan_survei', 'LIKE', '%' . request('q') . '%')->paginate(10);
+        return response()->json($data);
+    }
+
     public function ambilIDBSMitra()
     {
         $kegiatan_filter_bulan = DaftarSurveiModel::where('waktu_mulai', 'LIKE', '%' . $_COOKIE['bulan-alokasi'] . '%')->get('daftar_kegiatan_survei')->toArray();
