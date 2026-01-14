@@ -195,18 +195,47 @@ $('#daftar-mitra-all').on('change', '.dt-checkboxes', function (e) {
 });
 
 $('#jenisKegiatan').on('change', function () {
+    // Definisikan elemen agar kode lebih rapi
+    // PML
+    var divPML = $('#formNominalPerSatuanPML');
+    var inputPML = $('#nominalperSatuanPML');
+    
+    // Pengolahan
+    var divPengolahan = $('#formNominalPerSatuanPengolahan');
+    var inputPengolahan = $('#nominalperSatuanPengolahan');
+
+    // Fungsi reset: Sembunyikan div & Matikan input (disable)
+    function resetForm() {
+        divPengolahan.attr('hidden', true);
+        inputPengolahan.prop('disabled', true); // Penting: matikan input agar tidak divalidasi
+        
+        divPML.attr('hidden', true);
+        inputPML.prop('disabled', true); // Penting: matikan input agar tidak divalidasi
+    }
+
     if ($(this).val() == "Pendataan + Pengolahan") {
-        $('#formNominalPerSatuanPengolahan').removeAttr('hidden');
-        $('#formNominalPerSatuanPML').attr('hidden', true);
+        resetForm(); // Reset dulu
+        // Aktifkan Pengolahan
+        divPengolahan.removeAttr('hidden');
+        inputPengolahan.prop('disabled', false); 
+
     } else if ($(this).val() == "Pendataan + PML Mitra") {
-        $('#formNominalPerSatuanPML').removeAttr('hidden');
-        $('#formNominalPerSatuanPengolahan').attr('hidden', true);
+        resetForm(); // Reset dulu
+        // Aktifkan PML
+        divPML.removeAttr('hidden');
+        inputPML.prop('disabled', false);
+
     } else if ($(this).val() == "Pendataan + Pengolahan + PML Mitra") {
-        $('#formNominalPerSatuanPengolahan').removeAttr('hidden');
-        $('#formNominalPerSatuanPML').removeAttr('hidden');
+        // Aktifkan Keduanya (tidak perlu reset karena dua-duanya dipakai)
+        divPengolahan.removeAttr('hidden');
+        inputPengolahan.prop('disabled', false);
+
+        divPML.removeAttr('hidden');
+        inputPML.prop('disabled', false);
+
     } else {
-        $('#formNominalPerSatuanPengolahan').attr('hidden', true);
-        $('#formNominalPerSatuanPML').attr('hidden', true);
+        // Pilihan lain atau kosong -> matikan semua
+        resetForm();
     }
 });
 
