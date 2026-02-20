@@ -1,66 +1,235 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📍 Seemitra — Sistem Manajemen Pengalokasian Wilayah Kerja Mitra
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/img/bps-gusitv2.png" alt="BPS Logo" width="200"/>
 </p>
 
-## About Laravel
+Seemitra adalah aplikasi berbasis web yang dibangun menggunakan **Laravel 11** untuk membantu *Subject Matter* BPS (Badan Pusat Statistik) dalam mengelola pengalokasian mitra statistik pada kegiatan survei dan sensus. Aplikasi ini menyediakan fitur peta interaktif, rekomendasi alokasi mitra berbasis lokasi, manajemen honor mitra, serta pembuatan dokumen SPK dan BAST secara otomatis.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Dashboard Peta Interaktif** — Visualisasi persebaran mitra menggunakan Leaflet.js dengan clustering marker.
+- **Alokasi Mitra Survei** — Rekomendasi alokasi mitra ke blok sensus (BS) atau wilayah kerja statistik (Wilkerstat) berdasarkan kedekatan geografis.
+- **Alokasi Mitra Sensus** — Pengalokasian mitra untuk kegiatan sensus berdasarkan SLS (Satuan Lingkungan Setempat).
+- **Manajemen Rate Honor** — Penetapan dan pengelolaan honor mitra per kegiatan survei/sensus.
+- **Generate Dokumen Otomatis** — Pembuatan Surat Perintah Kerja (SPK) dan Berita Acara Serah Terima (BAST) dalam format `.docx`.
+- **Menu Master** — Pengelolaan data kegiatan survei/sensus, daftar mitra, pengguna, SBML (Standar Biaya Masukan Lainnya), dan status alokasi.
+- **Rekap Honor Mitra** — Rekapitulasi total honor mitra per bulan/kegiatan beserta filter dinamis.
+- **Autentikasi** — Login menggunakan email/password, Google OAuth, dan Facebook OAuth.
+- **Manajemen Pengguna** — Pengaturan peran pengguna (Subject Matter, Admin, Anggota).
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Teknologi yang Digunakan
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Layer | Teknologi |
+|---|---|
+| Backend | Laravel 11, PHP >= 8.2 |
+| Frontend | Bootstrap 5, Alpine.js, Tailwind CSS |
+| Peta | Leaflet.js, Leaflet MarkerCluster, Leaflet Awesome Markers |
+| Database | MySQL |
+| Tabel Interaktif | DataTables, Select2 |
+| Export Dokumen | PhpOffice/PhpWord |
+| Import Excel | Maatwebsite/Excel |
+| Notifikasi | RealRashid/SweetAlert |
+| Auth Sosial | Laravel Socialite (Google, Facebook) |
+| Build Tool | Vite |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## ⚙️ Persyaratan Sistem
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL
+- Extension PHP: `intl`, `zip`, `gd`, `mbstring`, `xml`
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🚀 Instalasi
 
-## Contributing
+### 1. Clone Repository
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/username/seemitra.git
+cd seemitra
+```
 
-## Code of Conduct
+### 2. Install Dependensi PHP
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Install Dependensi Node.js
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+npm install
+```
 
-## License
+### 4. Konfigurasi Environment
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Kemudian sesuaikan konfigurasi database dan OAuth pada file `.env`:
+
+```env
+APP_NAME=Seemitra
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=rekomendasi_alokasi_mitra
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URI=http://localhost/auth/google/callback
+
+# Facebook OAuth
+FACEBOOK_CLIENT_ID=your-facebook-client-id
+FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
+FACEBOOK_REDIRECT_URI=http://localhost/auth/facebook/callback
+```
+
+### 5. Migrasi Database
+
+```bash
+php artisan migrate
+```
+
+### 6. Build Asset Frontend
+
+```bash
+# Development
+npm run dev
+
+# Production
+npm run build
+```
+
+### 7. Jalankan Server
+
+```bash
+php artisan serve
+```
+
+Aplikasi dapat diakses di `http://localhost:8000`.
+
+---
+
+## 📁 Struktur Direktori Utama
+
+```
+seemitra/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── IPDSProjectController.php       # Alokasi mitra survei & auth sosial
+│   │   │   ├── IPDSProjectSLSController.php    # Alokasi mitra sensus
+│   │   │   ├── HonorMitraController.php        # Honor, SPK, dan BAST
+│   │   │   ├── MenuMasterController.php        # Menu master (kegiatan, mitra, SBML)
+│   │   │   └── KeuanganAlokasiMitraController.php # Rekap honor
+│   │   └── Middleware/
+│   ├── Models/                                 # Eloquent Models
+│   └── Providers/
+├── database/
+│   └── migrations/
+├── public/
+│   ├── assets/doc_template/                    # Template SPK & BAST (.docx)
+│   ├── js/                                     # GeoJSON & JavaScript kustom
+│   └── img/
+├── resources/
+│   └── views/
+│       ├── alokasi/                            # Halaman alokasi mitra
+│       ├── keuangan/                           # Rekap honor mitra
+│       ├── master_menu/                        # Halaman menu master
+│       ├── mitra_view/                         # Tampilan sisi mitra
+│       └── rate_honor/                         # Form input honor
+└── routes/
+    └── web.php
+```
+
+---
+
+## 👤 Peran Pengguna
+
+| Peran | Akses |
+|---|---|
+| **Admin** | Akses penuh: kelola pengguna, mitra, kegiatan, SBML, status alokasi |
+| **Subject Matter (SM)** | Alokasi mitra, input honor, generate SPK & BAST, rekap honor |
+| **Mitra** | Melihat kalender kegiatan dan daftar survei/sensus yang diikuti |
+
+---
+
+## 📄 Template Dokumen
+
+Letakkan file template dokumen Word (`.docx`) pada direktori:
+
+```
+public/assets/doc_template/
+├── SPK_template.docx
+└── BAST_template.docx
+```
+
+Template menggunakan placeholder berbasis `${variable}` yang akan diisi secara otomatis saat generate dokumen.
+
+---
+
+## 🗺️ Data GeoJSON
+
+Data wilkerstat (blok sensus, desa, kecamatan) dalam format GeoJSON disimpan di direktori `public/js/`. Pastikan file berikut tersedia:
+
+- `1278_finalbs_2023_sem2.geojson` — Data blok sensus
+- `final_desa_202311278.geojson` — Data desa
+
+---
+
+## 📦 Package Utama
+
+```json
+{
+  "laravel/framework": "^11.0",
+  "laravel/socialite": "^5.11",
+  "maatwebsite/excel": "^3.1",
+  "phpoffice/phpword": "^1.2",
+  "kwn/number-to-words": "^2.8",
+  "realrashid/sweet-alert": "^7.1"
+}
+```
+
+---
+
+## 🔒 Keamanan
+
+- CSRF Protection aktif pada semua form
+- Autentikasi berbasis session Laravel
+- Middleware otorisasi untuk memisahkan akses Admin, SM, dan Mitra
+- Password di-hash menggunakan Bcrypt
+
+---
+
+## 📝 Lisensi
+
+Proyek ini dikembangkan untuk keperluan internal **BPS Kota Gunungsitoli (1278)**. Seluruh hak cipta dilindungi.
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi terbuka untuk internal tim pengembang BPS. Silakan buat *branch* baru, lakukan perubahan, dan ajukan *pull request* untuk direview.
+
+---
+
+<p align="center">
+  Dikembangkan dengan ❤️ untuk BPS Kota Gunungsitoli &copy; 2024
+</p>
