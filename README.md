@@ -1,83 +1,83 @@
-# 📍 Seemitra — Sistem Manajemen Pengalokasian Wilayah Kerja Mitra
+# 📍 Seemitra — Partner Work Area Allocation Management System
 
 <p align="center">
   <img src="public/img/bps-gusitv2.png" alt="BPS Logo" width="200"/>
 </p>
 
-Seemitra adalah aplikasi berbasis web yang dibangun menggunakan **Laravel 11** untuk membantu *Subject Matter* BPS (Badan Pusat Statistik) dalam mengelola pengalokasian mitra statistik pada kegiatan survei dan sensus. Aplikasi ini menyediakan fitur peta interaktif, rekomendasi alokasi mitra berbasis lokasi, manajemen honor mitra, serta pembuatan dokumen SPK dan BAST secara otomatis.
+Seemitra is a web-based application built with **Laravel 11** designed to assist *Subject Matter* officers at BPS (Statistics Indonesia) in managing the allocation of statistical field partners (*mitra*) for survey and census activities. The system provides an interactive map, location-based partner allocation recommendations, honor/payment management, and automated document generation for SPK and BAST letters.
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-- **Dashboard Peta Interaktif** — Visualisasi persebaran mitra menggunakan Leaflet.js dengan clustering marker.
-- **Alokasi Mitra Survei** — Rekomendasi alokasi mitra ke blok sensus (BS) atau wilayah kerja statistik (Wilkerstat) berdasarkan kedekatan geografis.
-- **Alokasi Mitra Sensus** — Pengalokasian mitra untuk kegiatan sensus berdasarkan SLS (Satuan Lingkungan Setempat).
-- **Manajemen Rate Honor** — Penetapan dan pengelolaan honor mitra per kegiatan survei/sensus.
-- **Generate Dokumen Otomatis** — Pembuatan Surat Perintah Kerja (SPK) dan Berita Acara Serah Terima (BAST) dalam format `.docx`.
-- **Menu Master** — Pengelolaan data kegiatan survei/sensus, daftar mitra, pengguna, SBML (Standar Biaya Masukan Lainnya), dan status alokasi.
-- **Rekap Honor Mitra** — Rekapitulasi total honor mitra per bulan/kegiatan beserta filter dinamis.
-- **Autentikasi** — Login menggunakan email/password, Google OAuth, dan Facebook OAuth.
-- **Manajemen Pengguna** — Pengaturan peran pengguna (Subject Matter, Admin, Anggota).
+- **Interactive Map Dashboard** — Visualize partner distribution using Leaflet.js with marker clustering.
+- **Survey Partner Allocation** — Recommend partner assignments to census blocks (BS) or statistical working areas (Wilkerstat) based on geographic proximity.
+- **Census Partner Allocation** — Allocate partners for census activities based on SLS (Sub-village Statistical Units).
+- **Honor Rate Management** — Set and manage partner payment rates per survey/census activity.
+- **Automated Document Generation** — Generate Work Order Letters (SPK) and Handover Reports (BAST) in `.docx` format.
+- **Master Menu** — Manage survey/census activities, partner lists, users, SBML (budget standards), and allocation statuses.
+- **Honor Summary** — Monthly/activity-based partner payment recapitulation with dynamic filtering.
+- **Authentication** — Login via email/password, Google OAuth, and Facebook OAuth.
+- **User Management** — Role-based access control (Subject Matter, Admin, Member).
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Tech Stack
 
-| Layer | Teknologi |
+| Layer | Technology |
 |---|---|
 | Backend | Laravel 11, PHP >= 8.2 |
 | Frontend | Bootstrap 5, Alpine.js, Tailwind CSS |
-| Peta | Leaflet.js, Leaflet MarkerCluster, Leaflet Awesome Markers |
+| Maps | Leaflet.js, Leaflet MarkerCluster, Leaflet Awesome Markers |
 | Database | MySQL |
-| Tabel Interaktif | DataTables, Select2 |
-| Export Dokumen | PhpOffice/PhpWord |
-| Import Excel | Maatwebsite/Excel |
-| Notifikasi | RealRashid/SweetAlert |
-| Auth Sosial | Laravel Socialite (Google, Facebook) |
+| Interactive Tables | DataTables, Select2 |
+| Document Export | PhpOffice/PhpWord |
+| Excel Import | Maatwebsite/Excel |
+| Notifications | RealRashid/SweetAlert |
+| Social Auth | Laravel Socialite (Google, Facebook) |
 | Build Tool | Vite |
 
 ---
 
-## ⚙️ Persyaratan Sistem
+## ⚙️ System Requirements
 
 - PHP >= 8.2
 - Composer
 - Node.js & NPM
 - MySQL
-- Extension PHP: `intl`, `zip`, `gd`, `mbstring`, `xml`
+- PHP Extensions: `intl`, `zip`, `gd`, `mbstring`, `xml`
 
 ---
 
-## 🚀 Instalasi
+## 🚀 Installation
 
-### 1. Clone Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/username/seemitra.git
 cd seemitra
 ```
 
-### 2. Install Dependensi PHP
+### 2. Install PHP Dependencies
 
 ```bash
 composer install
 ```
 
-### 3. Install Dependensi Node.js
+### 3. Install Node.js Dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Konfigurasi Environment
+### 4. Configure Environment
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-Kemudian sesuaikan konfigurasi database dan OAuth pada file `.env`:
+Then update the database and OAuth credentials in your `.env` file:
 
 ```env
 APP_NAME=Seemitra
@@ -101,13 +101,13 @@ FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
 FACEBOOK_REDIRECT_URI=http://localhost/auth/facebook/callback
 ```
 
-### 5. Migrasi Database
+### 5. Run Database Migrations
 
 ```bash
 php artisan migrate
 ```
 
-### 6. Build Asset Frontend
+### 6. Build Frontend Assets
 
 ```bash
 # Development
@@ -117,63 +117,63 @@ npm run dev
 npm run build
 ```
 
-### 7. Jalankan Server
+### 7. Start the Development Server
 
 ```bash
 php artisan serve
 ```
 
-Aplikasi dapat diakses di `http://localhost:8000`.
+The application will be available at `http://localhost:8000`.
 
 ---
 
-## 📁 Struktur Direktori Utama
+## 📁 Project Structure
 
 ```
 seemitra/
 ├── app/
 │   ├── Http/
 │   │   ├── Controllers/
-│   │   │   ├── IPDSProjectController.php       # Alokasi mitra survei & auth sosial
-│   │   │   ├── IPDSProjectSLSController.php    # Alokasi mitra sensus
-│   │   │   ├── HonorMitraController.php        # Honor, SPK, dan BAST
-│   │   │   ├── MenuMasterController.php        # Menu master (kegiatan, mitra, SBML)
-│   │   │   └── KeuanganAlokasiMitraController.php # Rekap honor
+│   │   │   ├── IPDSProjectController.php          # Survey partner allocation & social auth
+│   │   │   ├── IPDSProjectSLSController.php       # Census partner allocation
+│   │   │   ├── HonorMitraController.php           # Honor management, SPK & BAST generation
+│   │   │   ├── MenuMasterController.php           # Master menu (activities, partners, SBML)
+│   │   │   └── KeuanganAlokasiMitraController.php # Honor recapitulation
 │   │   └── Middleware/
-│   ├── Models/                                 # Eloquent Models
+│   ├── Models/                                    # Eloquent Models
 │   └── Providers/
 ├── database/
 │   └── migrations/
 ├── public/
-│   ├── assets/doc_template/                    # Template SPK & BAST (.docx)
-│   ├── js/                                     # GeoJSON & JavaScript kustom
+│   ├── assets/doc_template/                       # SPK & BAST Word templates
+│   ├── js/                                        # GeoJSON & custom JavaScript
 │   └── img/
 ├── resources/
 │   └── views/
-│       ├── alokasi/                            # Halaman alokasi mitra
-│       ├── keuangan/                           # Rekap honor mitra
-│       ├── master_menu/                        # Halaman menu master
-│       ├── mitra_view/                         # Tampilan sisi mitra
-│       └── rate_honor/                         # Form input honor
+│       ├── alokasi/                               # Partner allocation pages
+│       ├── keuangan/                              # Honor recapitulation pages
+│       ├── master_menu/                           # Master menu pages
+│       ├── mitra_view/                            # Partner-facing views
+│       └── rate_honor/                            # Honor input forms
 └── routes/
     └── web.php
 ```
 
 ---
 
-## 👤 Peran Pengguna
+## 👤 User Roles
 
-| Peran | Akses |
+| Role | Access |
 |---|---|
-| **Admin** | Akses penuh: kelola pengguna, mitra, kegiatan, SBML, status alokasi |
-| **Subject Matter (SM)** | Alokasi mitra, input honor, generate SPK & BAST, rekap honor |
-| **Mitra** | Melihat kalender kegiatan dan daftar survei/sensus yang diikuti |
+| **Admin** | Full access: manage users, partners, activities, SBML, allocation statuses |
+| **Subject Matter (SM)** | Allocate partners, input honor, generate SPK & BAST, view honor summaries |
+| **Partner (Mitra)** | View activity calendar and list of assigned surveys/censuses |
 
 ---
 
-## 📄 Template Dokumen
+## 📄 Document Templates
 
-Letakkan file template dokumen Word (`.docx`) pada direktori:
+Place the Word document templates (`.docx`) in the following directory:
 
 ```
 public/assets/doc_template/
@@ -181,20 +181,20 @@ public/assets/doc_template/
 └── BAST_template.docx
 ```
 
-Template menggunakan placeholder berbasis `${variable}` yang akan diisi secara otomatis saat generate dokumen.
+Templates use `${variable}` placeholder syntax which is automatically populated during document generation.
 
 ---
 
-## 🗺️ Data GeoJSON
+## 🗺️ GeoJSON Data
 
-Data wilkerstat (blok sensus, desa, kecamatan) dalam format GeoJSON disimpan di direktori `public/js/`. Pastikan file berikut tersedia:
+Statistical working area data (census blocks, villages, sub-districts) in GeoJSON format should be placed in `public/js/`. Ensure the following files are present:
 
-- `1278_finalbs_2023_sem2.geojson` — Data blok sensus
-- `final_desa_202311278.geojson` — Data desa
+- `1278_finalbs_2023_sem2.geojson` — Census block data
+- `final_desa_202311278.geojson` — Village boundary data
 
 ---
 
-## 📦 Package Utama
+## 📦 Key Packages
 
 ```json
 {
@@ -209,27 +209,27 @@ Data wilkerstat (blok sensus, desa, kecamatan) dalam format GeoJSON disimpan di 
 
 ---
 
-## 🔒 Keamanan
+## 🔒 Security
 
-- CSRF Protection aktif pada semua form
-- Autentikasi berbasis session Laravel
-- Middleware otorisasi untuk memisahkan akses Admin, SM, dan Mitra
-- Password di-hash menggunakan Bcrypt
-
----
-
-## 📝 Lisensi
-
-Proyek ini dikembangkan untuk keperluan internal **BPS Kota Gunungsitoli (1278)**. Seluruh hak cipta dilindungi.
+- CSRF protection enabled on all forms
+- Laravel session-based authentication
+- Authorization middleware separating Admin, SM, and Partner access
+- Passwords hashed using Bcrypt
 
 ---
 
-## 🤝 Kontribusi
+## 📝 License
 
-Kontribusi terbuka untuk internal tim pengembang BPS. Silakan buat *branch* baru, lakukan perubahan, dan ajukan *pull request* untuk direview.
+This project was developed for internal use at **BPS Kota Gunungsitoli (1278)**. All rights reserved.
+
+---
+
+## 🤝 Contributing
+
+Contributions are open to the internal BPS development team. Please create a new branch, make your changes, and submit a pull request for review.
 
 ---
 
 <p align="center">
-  Dikembangkan dengan ❤️ untuk BPS Kota Gunungsitoli &copy; 2024
+  Built with ❤️ for BPS Kota Gunungsitoli &copy; 2024
 </p>
