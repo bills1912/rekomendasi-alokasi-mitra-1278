@@ -306,24 +306,25 @@ class HonorMitraController extends Controller
                     (int)$request->input('copyTanggalKegiatanBerakhir'),
                     'Asia/Jakarta'
                 )->translatedFormat('Y')),
-                'nomor_spk' => Carbon::createFromDate(
-                    (int)$request->input('tahunGenerateBAST'),
-                    (int)$request->input('copyBulanKegiatanBerakhir'),
-                    (int)$request->input('copyTanggalSPKinBAST'),
+                'nomor_spk' => ($idx_bast + 1) . "/PPK/PPIS/SPK/" .
+                Carbon::createFromDate(
+                        (int)$request->input('tahunGenerateSPK'),
+                        (int)$request->input('copyBulanSPK'),
+                        (int)$request->input('copyTanggalGenerateSPK'),
+                        'Asia/Jakarta'
+                    )->translatedFormat('n') . date('Y'),
+                'tanggal_mulai_spk' => Carbon::createFromDate(
+                    (int)$request->input('tahunGenerateSPK'),
+                    (int)$request->input('copyBulanSPK'),
+                    (int)$request->input('copyTanggalGenerateSPK'),
                     'Asia/Jakarta'
-                )->translatedFormat('j') . "." .
-                    Carbon::createFromDate(
-                        (int)$request->input('tahunGenerateBAST'),
-                        (int)$request->input('copyBulanKegiatanBerakhir'),
-                        (int)$request->input('copyTanggalSPKinBAST'),
-                        'Asia/Jakarta'
-                    )->translatedFormat('n') . "." .
-                    ($idx_bast + 1) . "/PPK/PPIS/SPK/" . Carbon::createFromDate(
-                        (int)$request->input('tahunGenerateBAST'),
-                        (int)$request->input('copyBulanKegiatanBerakhir'),
-                        (int)$request->input('copyTanggalSPKinBAST'),
-                        'Asia/Jakarta'
-                    )->translatedFormat('Y'),
+                )->translatedFormat('j F Y'),
+                'tanggal_berakhir_spk' => Carbon::createFromDate(
+                    (int)$request->input('tahunGenerateSPK'),
+                    (int)$request->input('copyBulanSPK'),
+                    (int)$request->input('copyTanggalGenerateSPK'),
+                    'Asia/Jakarta'
+                )->endOfMonth()->translatedFormat('d F Y'),
                 'tanggal_spk' => Carbon::createFromDate(
                     (int)$request->input('tahunGenerateBAST'),
                     (int)$request->input('copyBulanKegiatanBerakhir'),
