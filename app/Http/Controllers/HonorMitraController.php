@@ -173,7 +173,7 @@ class HonorMitraController extends Controller
                         (int)$request->input('copyBulanSPK'),
                         (int)$request->input('copyTanggalGenerateSPK'),
                         'Asia/Jakarta'
-                    )->translatedFormat('n') . date('Y'),
+                    )->translatedFormat('n') . '/' . date('Y'),
                 'tanggal_mulai_spk' => Carbon::createFromDate(
                     (int)$request->input('tahunGenerateSPK'),
                     (int)$request->input('copyBulanSPK'),
@@ -213,6 +213,13 @@ class HonorMitraController extends Controller
                 'honor' => $value->honor,
             ];
         }
+
+        $urutan_id_mitra_spk = [];
+        foreach ($data_mitra_group as $id_mitra => $value) {
+            $urutan_id_mitra_spk[$id_mitra] = count($urutan_id_mitra_spk);
+        }
+        Session::put('urutan_id_mitra_spk', $urutan_id_mitra_spk);
+
         foreach ($groupData as $group) {
             $arr_mitra_honor = array();
             $j = 1;
@@ -247,6 +254,8 @@ class HonorMitraController extends Controller
     public function generateBAST(Request $request)
     {
         Carbon::setLocale('id');
+        // Gunakan bulan SPK (copyBulanSPK) supaya konsisten dengan generateSPK
+        // Filter kegiatan BAST yang diminta
         $bulan_bast = Carbon::createFromDate(
             (int)$request->input('tahunGenerateBAST'),
             (int)$request->input('copyBulanKegiatanBerakhir'),
@@ -254,23 +263,20 @@ class HonorMitraController extends Controller
             'Asia/Jakarta'
         )->translatedFormat('F');
 
-        // Ambil semua kegiatan bulan yang sama persis seperti generateSPK
-        // untuk menentukan posisi/urutan idx mitra dalam SPK
+        // Query identik dengan generateSPK untuk dapat urutan mitra yang sama
         $semua_kegiatan_bulan = DaftarSurveiModel::where('periode_pencairan_honor', 'LIKE', '%' . $bulan_bast . '%')
             ->get('daftar_kegiatan_survei')->toArray();
         $data_mitra_spk_semua = RateHonor::whereIn('kegiatan', $semua_kegiatan_bulan)->get();
 
-        // Bangun urutan id_mitra sesuai kemunculan pertama (sama seperti logika di generateSPK)
-        $urutan_id_mitra_spk = [];
+        $urutan_id_mitra_spk = Session::get('urutan_id_mitra_spk', []);
         foreach ($data_mitra_spk_semua as $value) {
             if (!isset($urutan_id_mitra_spk[$value->id_mitra])) {
                 $urutan_id_mitra_spk[$value->id_mitra] = count($urutan_id_mitra_spk);
             }
         }
 
-        // Filter hanya kegiatan BAST yang diminta
         $kegiatan_filter_bulan = DaftarSurveiModel::where('daftar_kegiatan_survei', $request->input('initializeSurveiBAST'))
-            ->where('periode_pencairan_honor', 'LIKE', '%' . $bulan_bast . '%')
+            ->where('periode_pencairan_honor', 'LIKE', '%' . $bulan_bast . '%') // ← pakai $bulan_spk juga
             ->get('daftar_kegiatan_survei')->toArray();
 
         $numberToWords = new NumberToWords();
@@ -284,8 +290,10 @@ class HonorMitraController extends Controller
             ];
         }
         $arr_mitra = [];
+        $idx_map = [];
         foreach ($data_mitra_group as $field => $value) {
             $idx_bast = $urutan_id_mitra_spk[$field] ?? 0;
+            $idx_map[$field] = $idx_bast;
             $arr_mitra[] = [
                 'hari_bast' => Carbon::createFromDate(
                     (int)$request->input('tahunGenerateBAST'),
@@ -362,11 +370,9 @@ class HonorMitraController extends Controller
                 'volume_satuan' => '${volume_satuan_' . $idx_bast . '}',
                 'jenis_pembayaran' => '${jenis_pembayaran_' . $idx_bast . '}',
             ];
-            $idx_bast++;
         }
         $templateBAST = new TemplateProcessor('assets/doc_template/BAST_template.docx');
-        $templateBAST->cloneBlock('bast', sizeof($data_mitra_bast), true, false, $arr_mitra);
-        $i = 0;
+        $templateBAST->cloneBlock('bast', sizeof($data_mitra_group), true, false, $arr_mitra);
         $groupData = [];
         foreach ($data_mitra_bast as $field => $value) {
             $groupData[$value->id_mitra][] = [
@@ -377,7 +383,8 @@ class HonorMitraController extends Controller
                 'honor' => $value->honor,
             ];
         }
-        foreach ($groupData as $group) {
+        foreach ($groupData as $id_mitra => $group) {
+            $i = $idx_map[$id_mitra];
             $arr_mitra_honor = array();
             $j = 1;
             foreach ($group as $row) {
@@ -390,7 +397,6 @@ class HonorMitraController extends Controller
                 $j++;
             }
             $templateBAST->cloneRowAndSetValues("no_{$i}", $arr_mitra_honor);
-            $i++;
         }
         $savePath = 'BAST ' . $request->input('pilihKegiatanGenerateBAST') . ' - ' . Carbon::createFromDate(
             (int)$request->input('tahunGenerateBAST'),
